@@ -1,26 +1,27 @@
 import { trips } from "../data";
 
 export default class TripsView {
-
   constructor() {
     this.labelCheck = (trip) => {
-      return !trip.label
-        ? ""
-        : trip.label === "Новинка"
-        ? "new"
-        : "all-season";
+      return !trip.label ? "" : trip.label === "Новинка" ? "new" : "all-season";
     };
 
     this.timeCheck = (trip) => {
       if (trip.time.length > 4) {
-        return ``;
+        const times = trip.time.map((time, index) => {
+          return index > 2
+            ? `<button class='time__btn hidden'>${time}</button>`
+            : `<button class='time__btn'>${time}</button>`;
+        });
+        times.splice(3, 0, `<button class='more__btn'>eщё...</button>`);
+        return times.join("");
       } else {
         return trip.time
           .map((time) => {
             return `<button class='time__btn'>${time}</button>`;
           })
           .join("");
-      };
+      }
     };
 
     this.tripCardHTML = (trip) => {
@@ -44,7 +45,9 @@ export default class TripsView {
               ${trip.details
                 .map((detail) => {
                   return detail === "Ближайший рейс сегодня"
-                    ? `<div class='details__item-time'>${detail} <div class='today-time'>${this.timeCheck(trip)}</div></div>`
+                    ? `<div class='details__item-time'>${detail} <div class='today-time'>${this.timeCheck(
+                        trip
+                      )}</div></div>`
                     : `<div class='details__item'>${detail}</div>`;
                 })
                 .join("")}
@@ -59,11 +62,12 @@ export default class TripsView {
     };
   }
 
-
   drawTrips() {
     const tripsHTML = () => {
-      return `${trips.map((trip => this.tripCardHTML(trip))).join('')}`;
+      return `${trips.map((trip) => this.tripCardHTML(trip)).join("")}`;
     };
-    document.querySelector('.trips').insertAdjacentHTML('afterbegin', tripsHTML());
+    document
+      .querySelector(".trips")
+      .insertAdjacentHTML("afterbegin", tripsHTML());
   }
 }
