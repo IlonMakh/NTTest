@@ -1,6 +1,9 @@
+import TripsView from "./views/tripsView";
+
 export default class App {
 
   start(){
-    console.log('App start');
+    const trips = new TripsView();
+    trips.drawTrips();
   }
 }

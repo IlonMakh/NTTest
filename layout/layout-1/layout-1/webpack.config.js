@@ -28,13 +28,10 @@ module.exports = ({develop}) => ({
   ],
   module: {
       rules: [
-        {
-            test: /\.(woff|png|svg|jpg|jpeg|gif)$/i,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-            },
-        },
+          {
+              test: /\.(?:ico|png|jpg|jpeg|svg)$/i,
+              type: 'asset/inline'
+          },
           {
               test: /\.html$/i,
               loader: 'html-loader'
