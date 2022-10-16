@@ -89,7 +89,7 @@ export default class formView {
         <label for="tickets__amount">Количество билетов</label>
         <input id="tickets__amount" type="number" min="1">
       </div>
-      <button class="results">Посчитать</button>
+      <button class="results-btn">Посчитать</button>
     `;
 
     document.querySelector(".form").insertAdjacentHTML("afterbegin", formHTML);

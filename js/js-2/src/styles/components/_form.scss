@@ -1,0 +1,44 @@
+.form {
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  width: 500px;
+  border: 1px solid greenyellow;
+  box-shadow: 5px 3px 10px greenyellow;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .routes,
+  .time,
+  .tickets {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    input, 
+    select {
+      outline: none;
+    }
+
+    label {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  }
+
+  .results-btn {
+    height: 30px;
+    border: 2px solid greenyellow;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: 0.4s;
+
+    &:hover {
+      background-color:  greenyellow;
+    }
+  }
+}
