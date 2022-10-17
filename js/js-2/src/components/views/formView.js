@@ -75,9 +75,9 @@ export default class FormView {
     let backTimeHTML = '';
     if (routeProps.currentRoute === "ABA") {
       backTimeHTML = `
-      <div class="time">
-        <label for="time__select">Выберите время отправления обратно</label>
-        <select name="time" id="time__select">
+      <div class="time-back">
+        <label for="time-back__select">Выберите время отправления обратно</label>
+        <select name="time-back" id="time-back__select">
           ${this.currentTimeCheck()}
         </select>
       </div>

@@ -1,11 +1,13 @@
 import FormModels from "../models/formModels"
 import { dateConvert } from "../utils";
 import FormView from "../views/formView";
+import ResultsView from "../views/resultsView";
 
 export default class FormControllers {
   constructor() {
     this.formModel = new FormModels();
     this.formView = new FormView(this);
+    this.results = new ResultsView();
   }
 
   listenAll() {
@@ -40,8 +42,9 @@ export default class FormControllers {
 
   listenResultBtn() {
     const resultBtn = document.querySelector('.results-btn');
-    resultBtn.addEventListener('click', () => {
-      console.log('counting');
+    resultBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.results.drawResults();
     })
   }
 }
