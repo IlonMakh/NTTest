@@ -7,15 +7,15 @@ export default class ResultsView {
       let text;
       switch (route) {
         case "AB":
-          text = "из А в В";
+          text = "из А в Б";
           break;
 
         case "BA":
-          text = "из B в A";
+          text = "из Б в A";
           break;
 
         case "ABA":
-          text = "из A в B и обратно в A";
+          text = "из A в Б и обратно в A";
           break;
 
         default:
@@ -65,9 +65,9 @@ export default class ResultsView {
         const arrivingBackTime = +timeBack + routeProps.duration * 60000;
         return `Из пункта A теплоход отправляется в ${dateConvert(
           time
-        )} и прибывает в пункт В в ${dateConvert(
+        )} и прибывает в пункт Б в ${dateConvert(
           arrivingTime
-        )}. На обратном пути из пункта B теплоход отправляется в ${dateConvert(
+        )}. На обратном пути из пункта Б теплоход отправляется в ${dateConvert(
           timeBack
         )} и прибывает в пункт A в ${dateConvert(arrivingBackTime)}.`;
       } else {
@@ -90,6 +90,10 @@ export default class ResultsView {
       <p class="results__arriving">${this.arriving()}</p>
     </div>
     `;
-    document.querySelector(".form").insertAdjacentHTML("afterend", resultsHTML);
+    if (!document.querySelector('.results')) {
+      document.querySelector(".form").insertAdjacentHTML("afterend", resultsHTML);
+    } else {
+      document.querySelector('.results').innerHTML = resultsHTML;
+    }
   }
 }
